@@ -1,0 +1,17 @@
+name: xcube-dcfs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python
+  - python =3.7
+  # Required
+  - dask =1.2
+  - pip =19.1
+  - xarray =0.12
+  - zarr =2.3
+  # Testing
+  - pytest =4.4
+  - pytest-cov =2.6
+  - pip:
+    - requests_oauthlib =1.2
