@@ -1,0 +1,43 @@
+{
+  "input": {
+    "bounds": {
+      "bbox": [
+        13.822,
+        45.85,
+        14.559,
+        46.291
+      ],
+      "properties": {
+        "crs": "http://www.opengis.net/def/crs/OGC/9.5.3/CRS84"
+      }
+    },
+    "data": [
+      {
+        "type": "S2L1C",
+        "processing": {
+          "upsampling": "BILINEAR",
+          "downsampling": "BILINEAR"
+        },
+        "dataFilter": {
+          "timeRange": {
+            "from": "2018-10-01T00:00:00.000Z",
+            "to": "2018-10-10T00:00:00.000Z"
+          }
+        }
+      }
+    ]
+  },
+  "output": {
+    "width": 512,
+    "height": 512,
+    "responses": [
+      {
+        "identifier": "B02",
+        "format": {
+          "type": "image/tiff"
+        }
+      }
+    ]
+  },
+  "evalscript": "//VERSION=3\nfunction setup() {\n    return {\n        input: [{\n            bands: ['B02'],\n            units: ['reflectance'],\n        }],\n        output: [\n            {id: 'B02', bands: 1, sampleType: 'INT8'},\n        ]\n    };\n}\nfunction evaluatePixel(sample) {\n    return {\n        B02: [sample.B02],\n    };\n}"
+}
